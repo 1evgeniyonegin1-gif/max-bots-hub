@@ -1,0 +1,3 @@
+"""
+MAX BOTS HUB Tests
+"""
