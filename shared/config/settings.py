@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     # ====================
     # DATABASE
     # ====================
-    DATABASE_URL: str = "postgresql+asyncpg://postgres:password@localhost:5432/max_bots_hub"
+    DATABASE_URL: str = "postgresql+asyncpg://postgres:YOUR_PASSWORD@localhost:5432/max_bots_hub"
 
     # ====================
     # APP
@@ -35,7 +35,7 @@ class Settings(BaseSettings):
     # ====================
     # SECURITY
     # ====================
-    SECRET_KEY: str = "your-secret-key-change-in-production"
+    SECRET_KEY: str = "YOUR_SECRET_KEY"
     JWT_ALGORITHM: str = "HS256"
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 дней
 

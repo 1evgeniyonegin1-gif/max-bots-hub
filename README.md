@@ -238,18 +238,13 @@ Proprietary — Все права защищены
 
 ---
 
-## 👨‍💻 Команда
+---
 
-- **Продакт/Бизнес:** Вы
-- **Разработка:** Claude Code (AI)
+## Контакты
+
+- Email: 1evgeniyonegin1@gmail.com
+- Telegram: [@Daniel_Lysenko33](https://t.me/Daniel_Lysenko33)
 
 ---
 
-## 📮 Контакты
-
-- Email: [ваш email]
-- Telegram: [ваш telegram]
-
----
-
-**🚀 Создано с помощью Claude Code**
+Данил Лысенко — AI Developer
