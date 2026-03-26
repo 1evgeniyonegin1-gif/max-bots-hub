@@ -10,13 +10,16 @@ from sqlalchemy.pool import NullPool
 from shared.config.settings import settings
 
 # Создаём async engine
-engine = create_async_engine(
-    settings.DATABASE_URL,
-    echo=settings.DEBUG,
-    poolclass=NullPool if settings.DEBUG else None,
-    pool_size=20,
-    max_overflow=10,
-)
+_engine_kwargs = {
+    "echo": settings.DEBUG,
+}
+if settings.DEBUG:
+    _engine_kwargs["poolclass"] = NullPool
+else:
+    _engine_kwargs["pool_size"] = 20
+    _engine_kwargs["max_overflow"] = 10
+
+engine = create_async_engine(settings.DATABASE_URL, **_engine_kwargs)
 
 # Создаём session maker
 async_session_maker = async_sessionmaker(
