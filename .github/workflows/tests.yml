@@ -6,6 +6,7 @@ jobs:
     env:
       DEBUG: "false"
       DATABASE_URL: "sqlite+aiosqlite:///test.db"
+      PYTHONPATH: ${{ github.workspace }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
