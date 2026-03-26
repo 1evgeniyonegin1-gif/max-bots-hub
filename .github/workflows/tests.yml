@@ -16,5 +16,16 @@ jobs:
           pip install pytest
           pip install -r requirements.txt
           pip install loguru PyJWT || true
+      - name: Prepare for tests
+        run: |
+          # Rename platform/ temporarily to avoid stdlib conflict
+          mv platform platform_pkg
+          # Fix imports in code
+          find . -name "*.py" -exec sed -i 's/from platform\./from platform_pkg./g' {} +
+          find . -name "*.py" -exec sed -i 's/import platform\./import platform_pkg./g' {} +
       - name: Run tests
         run: pytest tests/ -v
+      - name: Restore
+        if: always()
+        run: |
+          mv platform_pkg platform || true
