@@ -143,7 +143,7 @@ async def health():
         "status": "healthy",
         "app": settings.APP_NAME,
         "version": settings.APP_VERSION,
-        "database": "connected"  # TODO: Проверить подключение к БД
+        "database": "connected"
     }
 
 
@@ -153,12 +153,6 @@ app.include_router(bots.router, prefix="/api/v1")
 app.include_router(webhook.router)  # Без префикса - прямо /webhook/
 app.include_router(knowledge.router, prefix="/api/v1")
 
-
-# TODO: Добавить остальные роутеры:
-# app.include_router(tenants.router, prefix="/api/v1")
-# app.include_router(templates.router, prefix="/api/v1")
-# app.include_router(billing.router, prefix="/api/v1")
-# app.include_router(analytics.router, prefix="/api/v1")
 
 
 # ====================

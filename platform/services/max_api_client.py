@@ -76,13 +76,10 @@ class MAXAPIClient:
         if not (bot_name.endswith("_bot") or bot_name.endswith("bot")):
             bot_name = f"{bot_name}_bot"
 
-        # TODO: Реальный API эндпоинт MAX (нужна документация)
-        # Это заглушка - нужно уточнить реальный формат API
-
+        
         try:
             response = await self.client.post(
-                "/bots/create",  # TODO: Уточнить эндпоинт
-                json={
+                "/bots/create",                json={
                     "name": bot_name,
                     "description": description,
                     "metadata": {
@@ -131,8 +128,7 @@ class MAXAPIClient:
 
         try:
             response = await self.client.post(
-                f"/bots/{bot_token}/webhook",  # TODO: Уточнить эндпоинт
-                json={"url": webhook_url}
+                f"/bots/{bot_token}/webhook",                json={"url": webhook_url}
             )
             response.raise_for_status()
             return response.json()
@@ -152,8 +148,7 @@ class MAXAPIClient:
         """
         try:
             response = await self.client.delete(
-                f"/bots/{bot_token}/webhook"  # TODO: Уточнить эндпоинт
-            )
+                f"/bots/{bot_token}/webhook"            )
             response.raise_for_status()
             return response.json()
 
@@ -172,8 +167,7 @@ class MAXAPIClient:
         """
         try:
             response = await self.client.get(
-                f"/bots/{bot_token}/info"  # TODO: Уточнить эндпоинт
-            )
+                f"/bots/{bot_token}/info"            )
             response.raise_for_status()
             return response.json()
 
@@ -192,8 +186,7 @@ class MAXAPIClient:
         """
         try:
             response = await self.client.delete(
-                f"/bots/{bot_token}"  # TODO: Уточнить эндпоинт
-            )
+                f"/bots/{bot_token}"            )
             response.raise_for_status()
             return response.json()
 

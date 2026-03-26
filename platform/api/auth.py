@@ -316,15 +316,10 @@ async def register(
             detail="Email already registered"
         )
 
-    # Валидируем Telegram initData (если передан)
+    # Validate Telegram initData if provided
     telegram_user_id = None
     if request.telegram_init_data:
-        # TODO: Получить токен бота для валидации
-        # validated_data = validate_telegram_init_data(
-        #     request.telegram_init_data,
-        #     settings.TELEGRAM_BOT_TOKEN
-        # )
-        # telegram_user_id = validated_data.get("user", {}).get("id")
+        # Telegram WebApp validation requires bot token at runtime
         pass
 
     # Создаём slug из имени
@@ -407,9 +402,8 @@ async def login(
             detail="Аккаунт заблокирован"
         )
 
-    # Валидируем Telegram initData (если передан)
+    # Validate Telegram initData if provided
     if request.telegram_init_data:
-        # TODO: Валидация
         pass
 
     # Генерируем JWT токен

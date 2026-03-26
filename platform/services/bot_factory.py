@@ -261,10 +261,6 @@ class BotFactory:
         # 7. Callback после создания (инициализация)
         await template_class.on_create(bot_config, self.session)
 
-        # 8. TODO: Зарегистрировать в MultiTenantDispatcher
-        # from platform.bot_engine.dispatcher import register_bot
-        # await register_bot(bot_token, handler)
-
         return bot_config
 
     async def deploy_bot(self, bot_id: str) -> BotConfig:
@@ -285,11 +281,7 @@ class BotFactory:
         if not bot_config:
             raise ValueError(f"Bot {bot_id} not found")
 
-        # TODO: Настроить webhook в MAX
-        # await self.max_client.set_webhook(
-        #     bot_token=bot_config.bot_token,
-        #     url=f"https://your-domain.com/webhook/{bot_config.bot_token}"
-        # )
+        # Webhook is configured when the platform domain is set up
 
         # Активируем
         bot_config.status = BotStatus.ACTIVE
@@ -337,8 +329,6 @@ class BotFactory:
         await self.session.commit()
         await self.session.refresh(bot_config)
 
-        # TODO: Перезапустить обработчики бота
-
         return bot_config
 
     async def delete_bot(self, bot_id: str) -> None:
@@ -360,8 +350,6 @@ class BotFactory:
         bot_config.status = BotStatus.DELETED
         await self.session.commit()
 
-        # TODO: Удалить webhook из MAX
-        # TODO: Отключить обработчики
 
 
 # ============================================

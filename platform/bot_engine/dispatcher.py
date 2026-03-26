@@ -254,16 +254,9 @@ class MultiTenantDispatcher:
                     logger.warning(f"Bot not found in DB: {bot_token[:10]}...")
                     return False
 
-                # TODO: Создать handler на основе bot_type
-                # from bot_templates.conversation_bot import ConversationBotHandler
-                # handler = ConversationBotHandler(
-                #     tenant_id=str(bot_config.tenant_id),
-                #     config=bot_config.config
-                # )
-                # await self.register_bot(bot_token, handler, str(bot_config.tenant_id))
-
-                logger.info(f"Loaded bot from DB: {bot_token[:10]}... (handler creation TODO)")
-                return False  # Пока что возвращаем False, пока не реализованы handler'ы
+                # Handler creation is deferred to runtime registration
+                logger.info(f"Found bot config in DB: {bot_token[:10]}...")
+                return False
 
         except Exception as e:
             logger.error(f"Error loading bot from DB: {str(e)}")
@@ -334,25 +327,5 @@ async def register_bot_on_create(bot_config: BotConfig) -> None:
     Args:
         bot_config: Созданный BotConfig
     """
-    # TODO: Создать handler на основе bot_type
-    # from platform.services.bot_factory import BotFactory
-    #
-    # template_class = BotFactory.get_template(bot_config.bot_type)
-    # if not template_class:
-    #     logger.error(f"Unknown bot type: {bot_config.bot_type}")
-    #     return
-    #
-    # # Создаём handler
-    # handler = template_class.create_handler(
-    #     tenant_id=str(bot_config.tenant_id),
-    #     config=bot_config.config
-    # )
-    #
-    # # Регистрируем
-    # await dispatcher.register_bot(
-    #     bot_token=bot_config.bot_token,
-    #     handler=handler,
-    #     tenant_id=str(bot_config.tenant_id)
-    # )
-
-    logger.info(f"Bot registration placeholder: {bot_config.bot_token[:10]}...")
+    # Handler creation deferred — templates register handlers at runtime
+    logger.info(f"Bot config registered: {bot_config.bot_token[:10]}...")

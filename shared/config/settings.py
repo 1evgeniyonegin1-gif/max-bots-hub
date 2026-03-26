@@ -99,7 +99,7 @@ class Settings(BaseSettings):
     CORS_ORIGINS: List[str] = []
     CORS_ALLOW_CREDENTIALS: bool = True
     CORS_ALLOW_METHODS: List[str] = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-    CORS_ALLOW_HEADERS: List[str] = ["*"]
+    CORS_ALLOW_HEADERS: List[str] = ["Authorization", "Content-Type", "X-Tenant-ID"]
 
     # ====================
     # RATE LIMITING

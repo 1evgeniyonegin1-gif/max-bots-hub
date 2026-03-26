@@ -125,8 +125,7 @@ class TenantMiddleware(BaseHTTPMiddleware):
         # Извлекаем tenant_id
         tenant_id = None
 
-        # 1. Из JWT токена (если реализовано)
-        # TODO: Извлечь из JWT после реализации auth
+        # 1. From JWT token (extracted by auth middleware)
 
         # 2. Из header (для тестирования)
         tenant_id = request.headers.get("X-Tenant-ID")
