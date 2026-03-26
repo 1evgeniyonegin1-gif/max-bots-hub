@@ -17,4 +17,4 @@ jobs:
           pip install -r requirements.txt
           pip install loguru PyJWT || true
       - name: Run tests
-        run: PYTHONPATH="${GITHUB_WORKSPACE}" pytest tests/ -v
+        run: pytest tests/ -v
