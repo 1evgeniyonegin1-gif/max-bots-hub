@@ -6,7 +6,6 @@ jobs:
     env:
       DEBUG: "false"
       DATABASE_URL: "sqlite+aiosqlite:///test.db"
-      PYTHONPATH: ${{ github.workspace }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -18,4 +17,4 @@ jobs:
           pip install -r requirements.txt
           pip install loguru PyJWT || true
       - name: Run tests
-        run: pytest tests/ -v
+        run: pytest tests/ -v --import-mode=importlib
